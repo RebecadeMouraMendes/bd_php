@@ -1,13 +1,15 @@
 <?php
 
-require_once '../model/pessoa.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Banco_de_dados/model/pessoa.php';
 
 class PessoaController{
     private $pessoa;
     
     public function __construct(){
         $this->pessoa = new Pessoa();
+        if($_GET['acao'] == 'inserir'){
         $this->inserir();
+        }
     }
 
     public function inserir(){
@@ -22,6 +24,10 @@ class PessoaController{
         
         $this->pessoa->inserir();
 
+    }
+
+    public function listar(){
+        return $this->pessoa->listar();
     }
 }
 new PessoaController();

@@ -1,5 +1,5 @@
 <?php
-require_once '../controller/conexao.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/Banco_de_dados/controller/conexao.php';
 
 class Pessoa{
     private $id;
@@ -79,6 +79,19 @@ class Pessoa{
         $stmt->bind_param('ssssssss', $this->nome, $this->endereco, $this->bairro, $this->cep, $this->cidade, $this->estado, $this->telefone, $this->celular);
         return $stmt->execute();
     }
+
+    public function listar(){
+        $sql = "SELECT * FROM pessoa";
+        $stmt = $this->conexao->getConexao()->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $pessoas = [];
+        while($pessoa = $result->fetch_assoc()){
+            $pessoas[] = $pessoa;
+        }
+        return $pessoas;
+    }
+
 }
 
 ?>
