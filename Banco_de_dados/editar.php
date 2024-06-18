@@ -23,8 +23,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/Banco_de_dados/controller/pessoaContr
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Cadastrar</a>
-                <a class="nav-link active" href="consultar.php">Consultar</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Cadastrar</a>
+                <a class="nav-link active" href="consultar.php?acao=consultar">Consultar</a>
             </div>
             </div>
         </div>
@@ -40,8 +40,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/Banco_de_dados/controller/pessoaContr
     &nbsp;
     <br>
     <?php
-        $pessoaController = new PessoaController();
-        $pessoa = $pessoaController->buscarPorId($_GET['id']);
+        $pessoaController = new PessoaController(); //Instância de pessoa controller
+        $pessoa = $pessoaController->buscarPorId($_GET['id']); //Pegar id
     ?>
     <form method = "POST" action="controller/pessoaController.php?acao=atualizar&id=<?php echo $pessoa['id'] ?>"> <!-- Endereço de onde os dados são enviados  -->
     <p class="fs-5">Nome:</p>
@@ -51,7 +51,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/Banco_de_dados/controller/pessoaContr
     <br>
     <p class="fs-5">Endereço:</p>
     <div class="input-group mb-3" name="endereco">
-        <input type="text" class="form-control" value="<?php echo $pessoa['endereco']; ?> name="endereco">
+        <input type="text" class="form-control" value="<?php echo $pessoa['endereco']; ?>" name="endereco">
     </div>
     <br>
     <p class="fs-5">Bairro:</p>

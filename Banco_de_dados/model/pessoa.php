@@ -70,8 +70,8 @@ class Pessoa{ //Classe publica
         $this->celular = $celular;
     }
     
-    public function __construct(){
-        $this->conexao = new Conexao();
+    public function __construct(){ //Método construtor
+        $this->conexao = new Conexao(); //Instancia do objeto da classe conexão
     }
 
     //Método insirir faz a conexão com o banco de dados
@@ -94,19 +94,19 @@ class Pessoa{ //Classe publica
         return $pessoas; //Retorna o vetor
     }
     
-    public function buscarPorId($id){
-        $sql = "SELECT * FROM pessoa WHERE id = ?"; //Declaração para sql, utilizando select
-        $stmt = $this->conexao->getConexao()->prepare($sql); //Acessa e busca a conexão, prepara o banco de dados para receber a declaração na variável sql 
-        $stmt->bind_param('i', $id);
+    public function buscarPorId($id){  //Método buscarPorId
+           $sql = "SELECT * FROM pessoa WHERE id = ?"; //Declaração para sql, utilizando select e where
+        $stmt = $this->conexao->getConexao()->prepare($sql);  //Acessa e busca a conexão, prepara o banco de dados para receber a declaração na variável sql 
+        $stmt->bind_param('i', $id); //Define os parametros 
         $stmt->execute(); //execução do armazenamento stmt
-        $result = $stmt->get_result(); // Busca os resultados do select
-        return $result->fetch_assoc(); //Retorna o vetor
+        $result = $stmt->get_result();  // Busca os resultados do select
+        return $result->fetch_assoc(); //Enquanto existir informações, retorna uma matriz onde armazena os registros 
     }
     public function atualizar($id){
         $sql = "UPDATE pessoa SET nome = ?, endereco = ?, bairro = ?, cep = ?, cidade = ?, estado = ?, telefone = ?, celular = ? WHERE id = ?"; //Declaração para o sql, de forma indefinida
         $stmt = $this->conexao->getConexao()->prepare($sql); // stmt acessa conexão, realiza o método e utiliza o prepare
-        $stmt->bind_param('ssssssss', $this->nome, $this->endereco, $this->bairro, $this->cep, $this->cidade, $this->estado, $this->telefone, $this->celular, $id); //Define os parametros no caso do s, String
-        return $stmt->execute(); //Retorna e executa
+        $stmt->bind_param('ssssssssi', $this->nome, $this->endereco, $this->bairro, $this->cep, $this->cidade, $this->estado, $this->telefone, $this->celular, $id); //Define os parametros no caso do s se refere a String e i para o id
+        return $stmt->execute();  //execução do armazenamento stmt
     }
 
 }

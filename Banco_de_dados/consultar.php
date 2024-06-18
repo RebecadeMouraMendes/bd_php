@@ -25,8 +25,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Cadastrar</a>
-                <a class="nav-link active" href="consultar.php">Consultar</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Cadastrar</a>
+                <a class="nav-link active" href="consultar.php?acao=consultar">Consultar</a>
             </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                                 <th><?php echo $pessoa['nome']?></th>  <!-- Exibe os valores de pessoa, de acordo com o index do nome-->
                                 <th><?php echo $pessoa['telefone']?></th>
                                 <th><?php echo $pessoa['celular']?></th>
-                                <th> <a href="editar.php?id=<?php echo $pessoa['id']; ?>">Editar</a></th>
+                                <th> <a href="editar.php?acao=editar&id=<?php echo $pessoa['id']; ?>">Editar</a></th> <!-- Link para ir para a página editar passando os parametros de ação e id -->
                             </tr>
                         <?php
                     }

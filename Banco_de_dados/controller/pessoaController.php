@@ -10,7 +10,7 @@ class PessoaController{ // Classe públic
         if($_GET['acao'] == 'inserir'){ //Get definido pela url caso seja igual a inserir efetua o método inserir
         $this->inserir();
         }
-        else if($_GET['acao'] == 'atualizar'){
+        if($_GET['acao'] == 'atualizar'){ //Get definido pela url caso seja igual a atualizar efetua o método editar
             $this->atualizar($_GET['id']);
         }
     }
@@ -32,8 +32,12 @@ class PessoaController{ // Classe públic
         return $this->pessoa->listar(); //Retorna o registro para o banco de dados
     }
 
+    public function buscarPorId($id){ 
+        return $this->pessoa->buscarPorId($id); //Retorna o id por meio do método
+    }
+
     public function atualizar($id){
-        $this->pessoa->setNome($_POST['nome']); //Seta as variaveis e pegam o input do formulário de acordo com o nome
+        $this->pessoa->setNome($_POST['nome']); //Seta as variaveis e pegam o input do formulário de acordo com o nome e o destino
         $this->pessoa->setEndereco($_POST['endereco']);
         $this->pessoa->setBairro($_POST['bairro']);
         $this->pessoa->setCep($_POST['cep']);
@@ -41,13 +45,11 @@ class PessoaController{ // Classe públic
         $this->pessoa->setEstado($_POST['estado']);
         $this->pessoa->setTelefone($_POST['telefone']);
         $this->pessoa->setCelular($_POST['celular']);
-        
         $this->pessoa->atualizar($id);
+
     }
 
-    public function buscarPorId($id){
-        return $this->pessoa->buscarPorId($id);
-    }
+    
 }
 new PessoaController(); // Instância
 ?>

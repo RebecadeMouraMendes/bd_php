@@ -22,8 +22,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#">Cadastrar</a>
-                <a class="nav-link active" href="consultar.php">Consultar</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Cadastrar</a>
+                <a class="nav-link active" href="consultar.php?acao=consultar">Consultar</a>
             </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
     <p class="fs-4">Cadastro</p>
     &nbsp;
     <br>
-    <form method = "POST" action="controller/pessoaController.php"> <!-- Endereço de onde os dados são enviados  -->
+    <form method = "POST" action="controller/pessoaController.php?acao=inserir"> <!-- Endereço de onde os dados são enviados  -->
     <p class="fs-5">Nome:</p>
     <div class="input-group mb-3" name="nome">
         <input type="text" class="form-control" placeholder="Digite o nome" name="nome">
