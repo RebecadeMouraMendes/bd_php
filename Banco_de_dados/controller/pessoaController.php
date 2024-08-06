@@ -9,11 +9,14 @@ class PessoaController{ // Classe públic
         $this->pessoa = new Pessoa(); //Acessando pelo this, com instância
         if($_GET['acao'] == 'inserir'){ //Get definido pela url caso seja igual a inserir efetua o método inserir
         $this->inserir();
+        header('Location: ../index.php');
         }
         else if($_GET['acao'] == 'atualizar'){ //Get definido pela url caso seja igual a atualizar efetua o método editar
             $this->atualizar($_GET['id']);
+            header('Location: ../consultar.php?acao=consultar');
         }else if($_GET['acao'] == 'excluir'){
             $this->excluir($_GET['id']);
+            header('Location: ../consultar.php?acao=consultar');
         }
 
     }
