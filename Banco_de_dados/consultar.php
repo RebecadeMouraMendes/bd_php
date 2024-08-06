@@ -55,8 +55,8 @@
                                 <th><?php echo $pessoa['nome']?></th>  <!-- Exibe os valores de pessoa, de acordo com o index do nome-->
                                 <th><?php echo $pessoa['telefone']?></th>
                                 <th><?php echo $pessoa['celular']?></th>
-                                <th> <a href="editar.php?acao=editar&id=<?php echo $pessoa['id']; ?>">Editar</a></th> <!-- Link para ir para a página editar passando os parametros de ação e id -->
-                                <th><a href="excluir.php?id=<?php echo $pessoa['id']; ?>&acao=consultar">Excluir</a></th>
+                                <th> <a type="button" class="btn btn-primary" href="editar.php?acao=editar&id=<?php echo $pessoa['id']; ?>">Editar</a></th> <!-- Link para ir para a página editar passando os parametros de ação e id -->
+                                <th><a type="button" class="btn btn-danger" href="excluir.php?id=<?php echo $pessoa['id']; ?>&acao=consultar">Excluir</a></th>
                             </tr>
                         <?php
                     }
